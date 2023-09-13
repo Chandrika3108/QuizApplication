@@ -8,9 +8,9 @@ import lombok.Data;
 @Data
 public class QuestionModel {
 	
-	  	int questionId;
+	  	Integer questionId;
 	  	
-	  	int topicId;
+	  	Integer topicId;
 	  	@NotBlank(message = "cannot be blank")
 	    String questionDescription;
 	  	@NotBlank(message = "cannot be blank")

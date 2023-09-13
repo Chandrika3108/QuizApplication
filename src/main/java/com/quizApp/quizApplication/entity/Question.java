@@ -9,6 +9,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Setter
 @Getter
@@ -16,7 +17,7 @@ import lombok.Setter;
 public class Question {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	int questionId;
+	Integer questionId;
 	@ManyToOne
 	@JoinColumn(name="topic_id", nullable=false)
 	@JsonBackReference
@@ -27,4 +28,18 @@ public class Question {
 	String option3;
 	String option4;
 	String correctAnswer;
+
+	@Override
+	public String toString() {
+		return "Question{" +
+				"questionId=" + questionId +
+				", topic=" + topic.getTopicId() +
+				", questionDescription='" + questionDescription + '\'' +
+				", option1='" + option1 + '\'' +
+				", option2='" + option2 + '\'' +
+				", option3='" + option3 + '\'' +
+				", option4='" + option4 + '\'' +
+				", correctAnswer='" + correctAnswer + '\'' +
+				'}';
+	}
 }
