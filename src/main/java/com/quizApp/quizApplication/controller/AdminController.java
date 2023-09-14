@@ -1,15 +1,6 @@
 package com.quizApp.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import com.quizApp.model.QuestionModel;
-import com.quizApp.model.TopicModel;
-import com.quizApp.service.AdminService;
-import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/admin")
@@ -29,5 +20,6 @@ public class AdminController {
         QuestionModel result = adminService.addQuestion(questionModel);
         return ResponseEntity.ok(result);
     }
+
 }
 
