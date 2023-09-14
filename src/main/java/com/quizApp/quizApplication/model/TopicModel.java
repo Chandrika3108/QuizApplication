@@ -11,7 +11,7 @@ import lombok.Data;
 public class TopicModel {
 
 
-    int topicId;
+    Integer topicId;
     @NotBlank(message = "cannot be blank")
     String topicName;
     String description;
