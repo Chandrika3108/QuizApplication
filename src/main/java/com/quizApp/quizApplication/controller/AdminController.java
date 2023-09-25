@@ -14,25 +14,25 @@ public class AdminController {
     @Autowired
     AdminService adminService;
 
-    @PutMapping(value = "/addTopic")
+    @PostMapping(value = "/addTopic")
     public TopicModel addTopic(@RequestBody @Valid TopicModel topicModel) {
 
         return adminService.addTopic(topicModel);
     }
 
-    @PutMapping(value = "/addQuestion")
+    @PostMapping(value = "/addQuestion")
     public QuestionModel addQuestion(@RequestBody @Valid QuestionModel questionModel) {
 
         return adminService.addQuestion(questionModel);
     }
 
-    @PutMapping(value = "/editQuestion")
+    @PostMapping(value = "/editQuestion")
     public QuestionModel editEntity(@RequestBody @Valid QuestionModel questionModel) {
 
         return adminService.editQuestion(questionModel);
     }
 
-    @PutMapping(value = "/editTopic")
+    @PostMapping(value = "/editTopic")
     public TopicModel editTopic(@RequestBody @Valid TopicModel topicModel) {
         return adminService.editTopic(topicModel);
     }
