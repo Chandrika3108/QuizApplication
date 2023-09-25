@@ -1,9 +1,9 @@
 //package com.quizApp.quizApplication;
 //
-//import com.quizApp.controller.AdminController;
-//import com.quizApp.model.QuestionModel;
-//import com.quizApp.model.TopicModel;
-//import com.quizApp.service.AdminService;
+//import com.quizApp.quizApplication.controller.AdminController;
+//import com.quizApp.quizApplication.model.QuestionModel;
+//import com.quizApp.quizApplication.model.TopicModel;
+//import com.quizApp.quizApplication.service.AdminService;
 //import org.junit.jupiter.api.BeforeEach;
 //import org.junit.jupiter.api.Test;
 //import org.mockito.InjectMocks;

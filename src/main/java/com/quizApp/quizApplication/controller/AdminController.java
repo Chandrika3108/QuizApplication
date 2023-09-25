@@ -1,6 +1,17 @@
-package com.quizApp.controller;
+package com.quizApp.quizApplication.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.quizApp.quizApplication.model.QuestionModel;
+import com.quizApp.quizApplication.model.TopicModel;
+import com.quizApp.quizApplication.service.AdminService;
+
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/admin")
