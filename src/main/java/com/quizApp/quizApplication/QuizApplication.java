@@ -1,4 +1,4 @@
-package com.quizApp;
+package com.quizApp.quizApplication;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,3 +13,4 @@ public class QuizApplication {
 	}
 
 }
+  
