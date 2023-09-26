@@ -140,3 +140,15 @@ VALUES (139, 4, 'Which movie features the famous line "You cant handle the truth
 
 INSERT INTO question (question_id, topic_id, question_description, option1, option2, option3, option4, correct_answer)
 VALUES (140, 4, 'Who plays the role of Jack Dawson in the movie "Titanic"?', 'Brad Pitt', 'Leonardo DiCaprio', 'Matt Damon', 'Johnny Depp', 'option2');
+
+
+
+INSERT INTO `users` (user_id,`name`,`email`,`mobile_number`, `pwd`, `role`,`create_dt`)
+ VALUES (1, 'chandrika','test@test.com','9876548337', '$2y$12$oRRbkNfwuR8ug4MlzH5FOeui.//1mkd.RsOAJMbykTSupVy.x/vb2', 'admin',CURDATE());
+
+
+ INSERT INTO `authorities` (id, `user_id`, `name`)
+  VALUES (1, 1, 'ROLE_USER');
+
+ INSERT INTO `authorities` (id, `user_id`, `name`)
+  VALUES (2, 1, 'ROLE_ADMIN');
