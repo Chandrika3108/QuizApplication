@@ -12,7 +12,7 @@ import lombok.Data;
 public class Topic {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "topic_id")
 	private Integer topicId;
 	

@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 @RestController
 @RequestMapping("/auth")
@@ -29,7 +28,30 @@ public class LoginController {
     @Autowired
     AuthorityDAO authorityDAO;
 
-
+    @PostMapping("/user/register")
+    public ResponseEntity<String> registerUser(@RequestBody User user) {
+        User saved = null;
+        ResponseEntity<String> response = null;
+        try {
+            //hashing password
+            List<User> users = userDAO.findByEmail(user.getEmail());
+            if (!users.isEmpty()) {
+                throw new Exception("User " + user.getEmail() + " already exists");
+            }
+            user.setPwd(passwordEncoder.encode(user.getPwd()));
+            user.setCreateDt(new Date(System.currentTimeMillis()));
+            user.setAuthorities(null);
+            saved = userDAO.save(user);
+            Authority authority = new Authority();
+            authority.setName("ROLE_USER");
+            authority.setUser(saved);
+            authorityDAO.save(authority);
+            response = ResponseEntity.status(HttpStatus.CREATED).body("User is successfully registered");
+        } catch (Exception e) {
+            response = ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An exception occured due to " + e.getMessage());
+        }
+        return response;
+    }
 
     @GetMapping("/login")
     public User getUserDetailsAfterLogin(Authentication authentication) {
