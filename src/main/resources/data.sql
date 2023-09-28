@@ -1,7 +1,7 @@
-insert into topic values(1,'Programming');
-insert into topic values(2,'Software Development');
-insert into topic values(3,'System Design');
-insert into topic values(4,'Movies');
+insert into topic values(default,'Programming');
+insert into topic values(default,'Software Development');
+insert into topic values(default,'System Design');
+insert into topic values(default,'Movies');
 
 
 INSERT INTO question (question_id, topic_id, question_description, option1, option2, option3, option4, correct_answer)
@@ -144,11 +144,11 @@ VALUES (140, 4, 'Who plays the role of Jack Dawson in the movie "Titanic"?', 'Br
 
 
 INSERT INTO `users` (user_id,`name`,`email`,`mobile_number`, `pwd`, `role`,`create_dt`)
- VALUES (1, 'chandrika','test@test.com','9876548337', '$2y$12$oRRbkNfwuR8ug4MlzH5FOeui.//1mkd.RsOAJMbykTSupVy.x/vb2', 'admin',CURDATE());
+ VALUES (default, 'chandrika','test@test.com','9876548337', '$2y$12$oRRbkNfwuR8ug4MlzH5FOeui.//1mkd.RsOAJMbykTSupVy.x/vb2', 'admin',CURDATE());
 
 
  INSERT INTO `authorities` (id, `user_id`, `name`)
-  VALUES (1, 1, 'ROLE_USER');
+  VALUES (default, 1, 'ROLE_USER');
 
  INSERT INTO `authorities` (id, `user_id`, `name`)
-  VALUES (2, 1, 'ROLE_ADMIN');
+  VALUES (default, 1, 'ROLE_ADMIN');
