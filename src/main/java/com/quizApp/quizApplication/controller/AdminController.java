@@ -21,50 +21,34 @@ public class AdminController {
         return ResponseEntity.ok(result);
     }
 
-
-    @PostMapping(value = "/editQuestion")
-    public QuestionModel editEntity(@RequestBody @Valid QuestionModel questionModel) {
-
-        return adminService.editQuestion(questionModel);
-    }
-
-    @PostMapping(value = "/editTopic")
-    public TopicModel editTopic(@RequestBody @Valid TopicModel topicModel) {
-        return adminService.editTopic(topicModel);
-    }
-
     @PostMapping(value = "/addQuestion")
     public ResponseEntity<QuestionModel> addQuestion(@RequestBody @Valid QuestionModel questionModel) {
         QuestionModel result = adminService.addQuestion(questionModel);
         return ResponseEntity.ok(result);
     }
 
-    //    @PutMapping(value = "/topic/edit{id}")
-//    public TopicModel editEntity(@RequestBody @Valid TopicModel topicmodel) {
-//        TopicModel existingEntity = existingDao.findbyId(id)
-//                .orElseThrow(()-> new ConfigDataResourceNotFoundException("entity is not found"));
-//        existingEntity.setTopicId(questionModel.getTopicId());
-//        existingEntity.setDescription(questionModel.getTopicdescription());
-//        TopicModel savedEntity = existingDao.save(existingEntity);
-//        return adminService.editEntity(topicmodel);
-//    }
-//
+    @PostMapping(value = "/editTopic")
+    public ResponseEntity<TopicModel> editTopic(@RequestBody @Valid TopicModel topicModel) {
+        TopicModel result = adminService.editTopic(topicModel);
+        return ResponseEntity.ok(result);
+    }
+
+    @PostMapping(value = "/editQuestion")
+    public ResponseEntity<QuestionModel> editEntity(@RequestBody @Valid QuestionModel questionModel) {
+        QuestionModel result = adminService.editQuestion(questionModel);
+        return ResponseEntity.ok(result);
+    }
+
     @DeleteMapping("/deleteTopic/{id}")
-    public String deleteEntity(@PathVariable Integer id) {
+    public ResponseEntity<String> deleteEntity(@PathVariable Integer id) {
         adminService.deleteTopic(id);
-        return "Topic " + id + " deleted successfully";
+        return ResponseEntity.ok("Topic " + id + " deleted successfully");
     }
 
     @DeleteMapping("/deleteQuestion/{id}")
-    public String deleteQuestion(@PathVariable Integer id) {
+    public ResponseEntity<String> deleteQuestion(@PathVariable Integer id) {
         adminService.deleteQuestion(id);
-        return "Question " + id + " deleted successfully";
+        return ResponseEntity.ok("Question " + id + " deleted successfully");
     }
-//
-//    @DeleteMapping("/question/delete/{id}")
-//    public QuestionModel<?>  deleteEntity(@PathVariable Long id){
-//        QuestionModel.deleteById(id);
-//        return QuestionModel.ok().build();
-//    }
 
 }
