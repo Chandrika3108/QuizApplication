@@ -10,5 +10,5 @@ import java.util.List;
 public interface UserDAO extends CrudRepository<User, Long> {
 
     List<User> findByEmail(String email);
-
+    List<User> findByUsername(String username);
 }
