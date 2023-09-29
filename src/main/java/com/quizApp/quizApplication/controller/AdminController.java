@@ -5,6 +5,7 @@ import com.quizApp.quizApplication.model.TopicModel;
 import com.quizApp.quizApplication.service.AdminService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -15,16 +16,11 @@ public class AdminController {
     AdminService adminService;
 
     @PostMapping(value = "/addTopic")
-    public TopicModel addTopic(@RequestBody @Valid TopicModel topicModel) {
-
-        return adminService.addTopic(topicModel);
+    public ResponseEntity<TopicModel> addTopic(@RequestBody @Valid TopicModel topicModel) {
+        TopicModel result = adminService.addTopic(topicModel);
+        return ResponseEntity.ok(result);
     }
 
-    @PostMapping(value = "/addQuestion")
-    public QuestionModel addQuestion(@RequestBody @Valid QuestionModel questionModel) {
-
-        return adminService.addQuestion(questionModel);
-    }
 
     @PostMapping(value = "/editQuestion")
     public QuestionModel editEntity(@RequestBody @Valid QuestionModel questionModel) {
@@ -35,6 +31,12 @@ public class AdminController {
     @PostMapping(value = "/editTopic")
     public TopicModel editTopic(@RequestBody @Valid TopicModel topicModel) {
         return adminService.editTopic(topicModel);
+    }
+
+    @PostMapping(value = "/addQuestion")
+    public ResponseEntity<QuestionModel> addQuestion(@RequestBody @Valid QuestionModel questionModel) {
+        QuestionModel result = adminService.addQuestion(questionModel);
+        return ResponseEntity.ok(result);
     }
 
     //    @PutMapping(value = "/topic/edit{id}")

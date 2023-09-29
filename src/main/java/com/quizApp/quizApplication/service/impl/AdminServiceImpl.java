@@ -23,11 +23,11 @@ public class AdminServiceImpl implements AdminService {
     Logger logger = LoggerFactory.getLogger(AdminService.class);
     @Autowired
     TopicDAO topicDAO;
-
+ 
     @Autowired
     QuestionDAO questionDAO;
-
-
+    
+   
     @Override
     public TopicModel addTopic(TopicModel topicModel) {
         Topic topic = new Topic();
@@ -93,7 +93,7 @@ public class AdminServiceImpl implements AdminService {
         if (topicOptional.isEmpty()) {
             throw new RuntimeException("Topic given is not present");
         }
-        questionDAO.deleteAllById(topicOptional.get().getQuestions().stream().map(Question::getQuestionId).collect(Collectors.toList()));
+        //questionDAO.deleteAllById(topicOptional.get().getQuestions().stream().map(Question::getQuestionId).collect(Collectors.toList()));
         topicDAO.deleteById(id);
     }
 
