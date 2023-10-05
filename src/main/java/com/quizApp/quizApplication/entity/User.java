@@ -3,6 +3,7 @@ package com.quizApp.quizApplication.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 
 import java.util.Date;
 import java.util.Set;
@@ -16,8 +17,10 @@ public class User {
     @Column(name = "user_id")
     private int id;
 
+
     private String username;
 
+    @Email
     private String email;
 
     @Column(name = "mobile_number")

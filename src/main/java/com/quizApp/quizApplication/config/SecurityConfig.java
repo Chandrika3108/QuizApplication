@@ -37,7 +37,7 @@ public class SecurityConfig {
                         httpSecuritySessionManagementConfigurer.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(requests ->
                         requests.requestMatchers(AntPathRequestMatcher.antMatcher("/admin/**")).hasRole("ADMIN")
-                                .requestMatchers(AntPathRequestMatcher.antMatcher("/questions/**")).hasAnyRole("ADMIN", "USER")
+                                .requestMatchers(AntPathRequestMatcher.antMatcher("/questions/**")).permitAll()
                                 .requestMatchers(AntPathRequestMatcher.antMatcher("/auth/user/register")).permitAll()
                                 .anyRequest().authenticated()
                 )
