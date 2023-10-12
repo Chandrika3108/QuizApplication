@@ -119,46 +119,47 @@
 
     <build>
         <plugins>
-
-
-
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.9</version>
+                <executions>
+                    <execution>
+                        <id>prepare-agent</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>report</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
 
 <!--            <plugin>-->
 <!--                <groupId>org.jacoco</groupId>-->
 <!--                <artifactId>jacoco-maven-plugin</artifactId>-->
-<!--                <version>0.8.1</version>-->
+<!--                <version>0.8.5</version>-->
 <!--                <executions>-->
 <!--                    <execution>-->
-<!--                        <id>prepare-agent</id>-->
-<!--                        <goals>-->
-<!--                            <goal>prepare-agent</goal>-->
-<!--                        </goals>-->
-<!--                    </execution>-->
-<!--                    <execution>-->
 <!--                        <id>report</id>-->
-<!--                        <phase>prepare-package</phase>-->
+<!--                        <phase>verify</phase>-->
 <!--                        <goals>-->
 <!--                            <goal>report</goal>-->
 <!--                        </goals>-->
 <!--                        <configuration>-->
-<!--                            &lt;!&ndash; Sets the path to the file which contains the execution data. &ndash;&gt;-->
-<!--                            <dataFile>target/jacoco.exec</dataFile>-->
-<!--                            &lt;!&ndash; Sets the output directory for the code coverage report. &ndash;&gt;-->
-<!--                            <outputDirectory>target/jacoco-ut</outputDirectory>-->
+<!--                            <dataFile>${project.build.directory}/coverage-reports/aggregate.exec</dataFile>-->
+<!--                            <excludes>-->
+<!--                                <exclude>**/config/**/*.class</exclude>-->
+<!--                                <exclude>**/filter/**/*.class</exclude>-->
+<!--                            </excludes>-->
 <!--                        </configuration>-->
 <!--                    </execution>-->
 <!--                </executions>-->
-<!--                <configuration>-->
-<!--                    <systemPropertyVariables>-->
-<!--                        <jacoco-agent.destfile>target/jacoco.exec</jacoco-agent.destfile>-->
-<!--                    </systemPropertyVariables>-->
-<!--                    <excludes>-->
-<!--                        <exclude>com/quizApp/domain/*.class</exclude>-->
-<!--                        <exclude>snmaddula/app/exception/*.class</exclude>-->
-<!--                        <exclude>snmaddula/app/filter/*.class</exclude>-->
-<!--                        <exclude>snmaddula/app/App.class</exclude>-->
-<!--                    </excludes>-->
-<!--                </configuration>-->
 <!--            </plugin>-->
             <plugin>
                 <groupId>org.springframework.boot</groupId>

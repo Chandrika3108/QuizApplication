@@ -3,8 +3,6 @@ package com.quizApp.quizApplication.config;
 import com.quizApp.quizApplication.filter.JWTTokenGeneratorFilter;
 import com.quizApp.quizApplication.filter.JWTTokenValidatorFilter;
 import jakarta.servlet.http.HttpServletRequest;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,13 +22,11 @@ import java.util.List;
 
 @Configuration
 public class SecurityConfig {
-    Logger logger = LoggerFactory.getLogger(SecurityConfig.class);
     @Value("${security.cors.allowed-origins}")
     private List<String> allowedOrigins;
 
     @Bean
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
-        logger.info(allowedOrigins.toString());
         http
                 // session management for UI
                 .sessionManagement(httpSecuritySessionManagementConfigurer ->
