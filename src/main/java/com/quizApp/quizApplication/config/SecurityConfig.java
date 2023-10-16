@@ -15,7 +15,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 
@@ -33,15 +32,13 @@ public class SecurityConfig {
                 .sessionManagement(httpSecuritySessionManagementConfigurer ->
                         httpSecuritySessionManagementConfigurer.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(requests ->
-                        requests.requestMatchers(AntPathRequestMatcher.antMatcher("/admin/**")).hasRole("ADMIN")
-                                //.requestMatchers(AntPathRequestMatcher.antMatcher("/questions/**")).hasRole("USER")
-                                .requestMatchers(AntPathRequestMatcher.antMatcher("/auth/user/register")
-                                        , AntPathRequestMatcher.antMatcher("/questions/**")
-                                        , AntPathRequestMatcher.antMatcher("/topic/**")
-                                        , AntPathRequestMatcher.antMatcher("/h2-console/**")).permitAll()
-
-
-                                .anyRequest().authenticated()
+                                requests.anyRequest().permitAll()
+                        //.requestMatchers(AntPathRequestMatcher.antMatcher("/admin/**")).hasRole("ADMIN")
+                        //.requestMatchers(AntPathRequestMatcher.antMatcher("/questions/**")).hasRole("USER")
+//                                .requestMatchers( AntPathRequestMatcher.antMatcher("/auth/user/register")
+//                                        , AntPathRequestMatcher.antMatcher("/questions/**")
+//                                        , AntPathRequestMatcher.antMatcher("/topic/**")
+//                                        , AntPathRequestMatcher.antMatcher("/h2-console/**")).permitAll().anyRequest().authenticated()
                 )
 
 
