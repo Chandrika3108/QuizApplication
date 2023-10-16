@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -36,7 +37,10 @@ public class SecurityConfig {
                                 //.requestMatchers(AntPathRequestMatcher.antMatcher("/questions/**")).hasRole("USER")
                                 .requestMatchers(AntPathRequestMatcher.antMatcher("/auth/user/register")
                                         , AntPathRequestMatcher.antMatcher("/questions/**")
-                                        , AntPathRequestMatcher.antMatcher("/topic/**")).permitAll()
+                                        , AntPathRequestMatcher.antMatcher("/topic/**")
+                                        , AntPathRequestMatcher.antMatcher("/h2-console/**")).permitAll()
+
+
                                 .anyRequest().authenticated()
                 )
 
@@ -63,6 +67,7 @@ public class SecurityConfig {
                 .addFilterAfter(new JWTTokenGeneratorFilter(), BasicAuthenticationFilter.class)
                 .addFilterBefore(new JWTTokenValidatorFilter(), BasicAuthenticationFilter.class)
         ;
+        http.headers(header -> header.frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin));
         return http.build();
     }
 
