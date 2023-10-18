@@ -7,6 +7,7 @@ import com.quizApp.quizApplication.entity.Topic;
 import com.quizApp.quizApplication.model.QuestionModel;
 import com.quizApp.quizApplication.model.TopicModel;
 import com.quizApp.quizApplication.service.AdminService;
+import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -15,7 +16,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.Objects;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class AdminServiceImpl implements AdminService {
@@ -23,11 +23,11 @@ public class AdminServiceImpl implements AdminService {
     Logger logger = LoggerFactory.getLogger(AdminService.class);
     @Autowired
     TopicDAO topicDAO;
- 
+
     @Autowired
     QuestionDAO questionDAO;
-    
-   
+
+
     @Override
     public TopicModel addTopic(TopicModel topicModel) {
         Topic topic = new Topic();
@@ -88,12 +88,13 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
+    @Transactional
     public void deleteTopic(Integer id) {
         Optional<Topic> topicOptional = topicDAO.findById(id);
         if (topicOptional.isEmpty()) {
             throw new RuntimeException("Topic given is not present");
         }
-        //questionDAO.deleteAllById(topicOptional.get().getQuestions().stream().map(Question::getQuestionId).collect(Collectors.toList()));
+        questionDAO.deleteByTopic(topicOptional.get());
         topicDAO.deleteById(id);
     }
 

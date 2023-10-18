@@ -16,7 +16,7 @@ public class QuizExceptionHandlerTests {
     @Test
     public void handleAccessDeniedExceptionTests() {
         Exception ex = new RuntimeException("Invalid Date");
-        ResponseEntity<Object> response = quizExceptionHandler.handleAccessDeniedException(ex, null);
+        ResponseEntity<Object> response = quizExceptionHandler.internalServerError(ex, null);
         Assert.assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
     }
 }
